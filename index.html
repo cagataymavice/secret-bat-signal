@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>For Micaela 🦇💛</title>
+
+  <style>
+    :root{
+      --bg1:#05070c;
+      --bg2:#0b1220;
+      --card:#0e1626;
+      --border:#1f2a44;
+      --text:#e9eefc;
+      --muted:#a7b2cc;
+
+      --bat:#f7c600;        /* Batman yellow */
+      --batDark:#caa300;
+      --danger:#5f697c;
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+
+      /* Gotham night vibe */
+      background:
+        radial-gradient(900px 500px at 70% 15%, rgba(247,198,0,.18), transparent 60%),
+        radial-gradient(700px 450px at 25% 80%, rgba(96,165,250,.12), transparent 60%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+      overflow:hidden;
+    }
+
+    /* soft “bat-signal” beam */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:-20%;
+      background:
+        radial-gradient(circle at 75% 18%, rgba(247,198,0,.22), transparent 45%),
+        conic-gradient(from 260deg at 75% 18%, rgba(247,198,0,.10), transparent 40%, rgba(247,198,0,.06), transparent 70%);
+      filter: blur(12px);
+      pointer-events:none;
+    }
+
+    /* subtle city “windows” texture */
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size: 34px 34px, 44px 44px;
+      opacity:.08;
+      pointer-events:none;
+    }
+
+    .box{
+      width:min(560px, 92vw);
+      background: linear-gradient(180deg, rgba(14,22,38,.92), rgba(10,16,30,.92));
+      border:1px solid rgba(31,42,68,.9);
+      border-radius:24px;
+      padding:28px 22px;
+      text-align:center;
+      box-shadow: 0 18px 60px rgba(0,0,0,.55);
+      backdrop-filter: blur(10px);
+      position:relative;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 14px;
+      border-radius:999px;
+      border:1px solid rgba(247,198,0,.35);
+      background: rgba(247,198,0,.08);
+      color: var(--bat);
+      font-weight:700;
+      letter-spacing:.4px;
+      margin-bottom:14px;
+    }
+
+    .bat{
+      font-size:18px;
+      filter: drop-shadow(0 0 10px rgba(247,198,0,.35));
+    }
+
+    h1{
+      margin:8px 0 6px;
+      font-size:34px;
+      line-height:1.1;
+    }
+
+    p{
+      margin: 10px 0 22px;
+      color:var(--muted);
+      font-size:16px;
+    }
+
+    .actions{
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+
+    button{
+      font-size:16px;
+      padding:12px 18px;
+      border-radius:999px;
+      border:1px solid transparent;
+      cursor:pointer;
+      font-weight:800;
+      letter-spacing:.2px;
+      transition: transform .08s ease, filter .15s ease;
+      user-select:none;
+    }
+    button:active{ transform: scale(.98); }
+
+    .yes{
+      background: linear-gradient(180deg, var(--bat), var(--batDark));
+      color:#0a0a0a;
+      border-color: rgba(255,255,255,.12);
+      box-shadow: 0 14px 30px rgba(247,198,0,.18);
+    }
+    .yes:hover{ filter: brightness(1.05); }
+
+    .no{
+      background: rgba(255,255,255,.07);
+      color: var(--text);
+      border:1px solid rgba(255,255,255,.14);
+    }
+    .no:hover{ filter: brightness(1.08); }
+
+    .tiny{
+      margin-top:14px;
+      font-size:12px;
+      color: rgba(233,238,252,.7);
+    }
+    .tiny span{ color: var(--bat); font-weight:700; }
+
+    /* make the dodging button smoother on small screens */
+    @media (max-width:420px){
+      h1{ font-size:28px; }
+      button{ width: 190px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <div class="badge"><span class="bat">🦇</span>GOTHAM MESSAGE</div>
+    <h1>Micaela 💛</h1>
+    <p>Will you be my Valentine?<br><span style="color:var(--bat);font-weight:700;">(Say yes or the Bat-signal stays on all night.)</span></p>
+
+    <div class="actions">
+      <button class="yes" onclick="alert('YAY!! 💛🦇 I knew it! Gotham is safe now 😌')">YES 💘</button>
+
+      <button class="no"
+        onmouseover="this.style.position='absolute';
+                     this.style.left=(10+Math.random()*80)+'%';
+                     this.style.top=(10+Math.random()*70)+'%';">
+        NO 🙈
+      </button>
+    </div>
+
+    <div class="tiny">From: <span>The Dark Knight</span> (but softer for you)</div>
+  </div>
+</body>
+</html>
