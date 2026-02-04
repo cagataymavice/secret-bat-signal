@@ -116,8 +116,8 @@ body{
   margin: 0 auto 10px;
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  gap:8px;
+  justify-content: center;
+  gap: 10px;
 }
 
     button{
@@ -199,60 +199,41 @@ body{
   </div>
 <script>
   const noBtn = document.getElementById("noBtn");
-  const yesBtn = document.querySelector(".yes");
 
-  function dodge() {
-    const area = noBtn.parentElement.getBoundingClientRect();
-    const btn  = noBtn.getBoundingClientRect();
-    const yes  = yesBtn.getBoundingClientRect();
+  function dodgeAnywhere() {
+    const padding = 16; // kenarlardan boşluk
 
-    const padding = 12;        // duvar boşluğu
-    const safeRadius = 170;    // YES'ten uzak durma mesafesi (arttırdım)
-    const maxTries = 60;
+    // buton boyutu (daha doğru ölçüm için offset kullan)
+    const btnW = noBtn.offsetWidth;
+    const btnH = noBtn.offsetHeight;
 
-    // YES'in merkezi (safe zone buna göre)
-    const yesCx = yes.left + yes.width / 2;
-    const yesCy = yes.top  + yes.height / 2;
+    // ekran sınırları
+    const maxX = Math.max(0, window.innerWidth  - btnW - padding);
+    const maxY = Math.max(0, window.innerHeight - btnH - padding);
 
-    let x = 0, y = 0, tries = 0;
+    const x = padding/2 + Math.random() * maxX;
+    const y = padding/2 + Math.random() * maxY;
 
-    while (tries < maxTries) {
-      const maxX = Math.max(0, area.width  - btn.width  - padding);
-      const maxY = Math.max(0, area.height - btn.height - padding);
-
-      x = padding/2 + Math.random() * maxX;
-      y = padding/2 + Math.random() * maxY;
-
-      // NO'nun merkezini hesapla
-      const noCx = (area.left + x) + btn.width / 2;
-      const noCy = (area.top  + y) + btn.height / 2;
-
-      const dist = Math.hypot(noCx - yesCx, noCy - yesCy);
-
-      if (dist >= safeRadius) break;
-      tries++;
-    }
-
-    noBtn.style.position = "absolute";
+    noBtn.style.position = "fixed";  // HER YERE gidebilmesi için
     noBtn.style.left = x + "px";
     noBtn.style.top  = y + "px";
+    noBtn.style.zIndex = "9999";     // hep üstte kalsın
   }
 
-  // Masaüstü: daha "joker" kaçışı
-  noBtn.addEventListener("pointerenter", dodge);
-  noBtn.addEventListener("mousemove", dodge);
+  // Masaüstü: yaklaşınca kaçsın
+  noBtn.addEventListener("pointerenter", dodgeAnywhere);
 
-  // Telefon: dokununca kaçsın (ve tıklanamasın)
+  // Telefon: dokununca kaçsın
   noBtn.addEventListener("touchstart", (e) => {
     e.preventDefault();
-    dodge();
-  }, { passive:false });
+    dodgeAnywhere();
+  }, { passive: false });
 
-  // Tıklamayı tamamen iptal et
+  // Tıklamayı tamamen iptal et ve yine kaçır
   noBtn.addEventListener("click", (e) => {
     e.preventDefault();
     e.stopPropagation();
-    dodge();
+    dodgeAnywhere();
   });
 </script>
 
