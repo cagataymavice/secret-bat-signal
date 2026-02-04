@@ -137,14 +137,16 @@ body{
     .yes:hover{ filter: brightness(1.05); }
 
     .no{
-  background: rgba(140, 255, 120, 0.16);   /* Joker green tint */
+  background: linear-gradient(180deg, #2b123d, #14091f);
   color: #e9eefc;
-  border: 1px solid rgba(140, 255, 120, 0.55);
-  box-shadow: 0 10px 22px rgba(0,0,0,.35);
-  backdrop-filter: blur(6px);
+  border: 1.5px solid #7dff6b;
+  box-shadow:
+    0 0 0 rgba(0,0,0,0),
+    0 0 22px rgba(125,255,107,.35);
+  backdrop-filter: none;
 }
 .no:hover{
-  filter: brightness(1.18);
+  filter: brightness(1.15);
 }
     .below{
   margin-top:18px;
@@ -183,8 +185,8 @@ body{
   alert('YAY!! 💛🦇 I knew it! Gotham is safe now 😌');
 ">YES 💘</button>
 
-      <button class="no" onmouseover="...same code...">
-  <img src="joker.png" alt="Joker" style="height:18px;vertical-align:middle;margin-right:6px;">
+<button class="no" ...>
+  <img src="joker.png" alt="Joker" style="height:20px;vertical-align:middle;margin-right:8px;">
   NO
 </button>
     </div>
