@@ -184,9 +184,29 @@ body{
 
     /* make the dodging button smoother on small screens */
     @media (max-width:420px){
-      h1{ font-size:28px; }
-      button{ width: 190px; }
-    }
+  h1{ font-size:28px; }
+
+  .playground{
+    height: 170px;         /* dikey alana yer aç */
+  }
+
+  /* YES üstte ortada */
+  .yes{
+    left: 50% !important;
+    top: 35% !important;
+    transform: translate(-50%, -50%) scale(1.08) !important;
+  }
+
+  /* NO altta ortada (başlangıç konumu) */
+  #noBtn{
+    left: 50% !important;
+    top: 75% !important;
+    right: auto !important;
+    transform: translate(-50%, -50%) !important;
+  }
+
+  button{ width: 220px; }  /* telefonda güzel durur */
+}
   </style>
 </head>
 
@@ -231,13 +251,13 @@ body{
   const y = padding/2 + Math.random() * maxY;
 
   noBtn.style.position = "absolute";
-  noBtn.style.left = x + "px";
-  noBtn.style.top  = y + "px";
+  noBtn.style.left = (x + btnW/2) + "px";
+  noBtn.style.top  = (y + btnH/2) + "px";
   noBtn.style.zIndex = "9999";
 
-  noBtn.style.transform = "none";  // ✅ artık translateY(-50%) yok
+  noBtn.style.transform = "translate(-50%, -50%)";  // ✅ artık translateY(-50%) yok
   noBtn.style.right = "auto";      // ✅ artık right:0 etkisi yok
-}
+  }
   // Masaüstü: yaklaşınca kaçsın
   noBtn.addEventListener("pointerenter", dodge);
   noBtn.addEventListener("mousemove", dodge);
