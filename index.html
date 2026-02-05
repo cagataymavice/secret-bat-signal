@@ -170,15 +170,13 @@
     }
     .yes:hover{ filter: brightness(1.05); }
 
-    /* ✅ NO (teğet bubble + neon border) */
+    /* ✅ NO */
     .no{
-      position: relative;         /* bubble’ı buna göre konumlayacağız */
-      display: grid;
-      grid-template-columns: 1fr; /* yazı tek kolonda tam ortada */
-      align-items: center;
+      position: relative;      /* bubble ve yazı buna göre konumlanacak */
+      display: block;          /* grid yerine basit: yazıyı absolute ile ortalayacağız */
 
-      padding-left: 0 !important; /* sol padding sıfır */
-      padding-right: 22px;        /* sağ YES gibi kalsın */
+      padding-left: 0 !important;
+      padding-right: 22px;
 
       background: linear-gradient(180deg, #2b123d, #14091f);
       color:#e9eefc;
@@ -190,45 +188,49 @@
     }
     .no:hover{ filter: brightness(1.12); }
 
+    /* ✅ NO yazısı: matematiksel tam orta */
     .no .btn-text{
-      justify-self:center;
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform: translate(-50%, -50%);
+
       font-weight:900;
       letter-spacing:.5px;
       font-size: 18px;
+      pointer-events:none;
     }
 
-    /* ✅ Bubble: kapsülün sol neon çizgisine TEĞET (sıfır) */
+    /* ✅ Bubble: biraz daha büyük + kapsül sol çizgisine teğet */
     .icon-bubble{
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
 
-      /* 👇 TEĞET AYARI:
-         kapsül border'ı 2px -> bubble'ı 2px sola alırsak çizgi üstüne biner */
-      left: -2px;
+      left: -2px;  /* teğet ayarı: -1 / -2 / -3 deneyebilirsin */
 
-      width:44px;
-      height:44px;
+      width:48px;   /* ✅ daha büyük */
+      height:48px;  /* ✅ daha büyük */
       border-radius:999px;
 
       display:grid;
       place-items:center;
 
       background: rgba(125,255,107,.16);
-      border: 1px solid rgba(125,255,107,.45); /* ✅ yeşil neon bubble çerçevesi KALSIN */
+      border: 1px solid rgba(125,255,107,.45); /* neon border kalsın */
 
       box-shadow:
         0 0 10px rgba(125,255,107,.25),
         inset 0 0 0 2px rgba(255,255,255,.06);
 
-      z-index: 2; /* kapsül border'ının üstünde dursun */
+      z-index: 2;
     }
 
     .no .joker-icon{
-      width:30px;
-      height:30px;
+      width:34px;   /* ✅ icon da büyüdü */
+      height:34px;
       object-fit:contain;
-      border-radius:8px;
+      border-radius:10px;
 
       image-rendering: -webkit-optimize-contrast;
 
