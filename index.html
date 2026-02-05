@@ -1,4 +1,4 @@
-<!doctype html> 
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -175,7 +175,7 @@
       position: relative;
       display: block;
 
-      padding-left: 0 !important; /* sol boşluğu sıfırla */
+      padding-left: 0 !important;
       padding-right: 22px;
 
       background: linear-gradient(180deg, #2b123d, #14091f);
@@ -188,7 +188,7 @@
     }
     .no:hover{ filter: brightness(1.12); }
 
-    /* ✅ NO yazısı tam orta */
+    /* ✅ NO text perfectly centered */
     .no .btn-text{
       position:absolute;
       left:50%;
@@ -199,15 +199,15 @@
       letter-spacing:.5px;
       font-size: 18px;
       pointer-events:none;
+      white-space: nowrap;
     }
 
-    /* ✅ Bubble: biraz daha büyük + sol çizgiye teğet */
+    /* ✅ Bubble */
     .icon-bubble{
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-
-      left: -2px;  /* teğet ayarı: -1 / -2 / -3 */
+      left: -2px;
 
       width:48px;
       height:48px;
@@ -246,10 +246,9 @@
       font-weight:800;
     }
 
-    /* Mobil */
+    /* Mobile */
     @media (max-width:420px){
       h1{ font-size:28px; }
-
       .playground{ height:170px; }
 
       .yes{
@@ -303,6 +302,30 @@
   <script>
     const noBtn = document.getElementById("noBtn");
     const pg = document.getElementById("playground");
+    const noText = noBtn.querySelector(".btn-text");
+
+    // Texts to cycle through
+    const phrases = [
+      "NO",
+      "REALLY?!",
+      "TRY AGAIN!",
+      "NICE TRY 😈",
+      "ALMOST 😅",
+      "NOT TODAY 🦇",
+      "LOL NO"
+    ];
+    let phraseIndex = 0;
+    let lastChange = 0;
+
+    function setNextPhrase() {
+      const now = Date.now();
+      // stop it from changing 1000x on mousemove
+      if (now - lastChange < 140) return;
+      lastChange = now;
+
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+      noText.textContent = phrases[phraseIndex];
+    }
 
     function dodge(){
       const area = pg.getBoundingClientRect();
@@ -325,33 +348,26 @@
       noBtn.style.transform = "translate(-50%, -50%)";
     }
 
-    // PC
-    noBtn.addEventListener("pointerenter", dodge);
-    noBtn.addEventListener("mousemove", dodge);
-
-    // iOS / touch
-    noBtn.addEventListener("pointerdown", (e) => {
-      e.preventDefault();
+    function attempt(e){
+      if (e){
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      setNextPhrase();
       dodge();
-    });
+    }
 
-    noBtn.addEventListener("touchstart", (e) => {
-      e.preventDefault();
-      dodge();
-    }, { passive:false });
+    // Desktop
+    noBtn.addEventListener("pointerenter", attempt);
+    noBtn.addEventListener("mousemove", attempt);
 
-    // click asla çalışmasın
-    noBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      dodge();
-    });
+    // Mobile / touch
+    noBtn.addEventListener("pointerdown", attempt);
+    noBtn.addEventListener("touchstart", attempt, { passive:false });
+    noBtn.addEventListener("touchmove", attempt, { passive:false });
 
-    // iOS için ekstra garanti
-    noBtn.addEventListener("touchmove", (e) => {
-      e.preventDefault();
-      dodge();
-    }, { passive:false });
+    // Never allow normal click
+    noBtn.addEventListener("click", attempt);
   </script>
 </body>
 </html>
