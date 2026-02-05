@@ -150,7 +150,7 @@
     /* ✅ Eşit boyut sistemi (PC + iOS) */
     .playground button{
       height:56px;
-      padding:0 22px;          /* YES için kalsın */
+      padding:0 22px;
       font-size:16px;
       line-height:1;
       min-width:170px;
@@ -172,10 +172,10 @@
 
     /* ✅ NO */
     .no{
-      position: relative;      /* bubble ve yazı buna göre konumlanacak */
-      display: block;          /* grid yerine basit: yazıyı absolute ile ortalayacağız */
+      position: relative;
+      display: block;
 
-      padding-left: 0 !important;
+      padding-left: 0 !important; /* sol boşluğu sıfırla */
       padding-right: 22px;
 
       background: linear-gradient(180deg, #2b123d, #14091f);
@@ -188,7 +188,7 @@
     }
     .no:hover{ filter: brightness(1.12); }
 
-    /* ✅ NO yazısı: matematiksel tam orta */
+    /* ✅ NO yazısı tam orta */
     .no .btn-text{
       position:absolute;
       left:50%;
@@ -201,23 +201,23 @@
       pointer-events:none;
     }
 
-    /* ✅ Bubble: biraz daha büyük + kapsül sol çizgisine teğet */
+    /* ✅ Bubble: biraz daha büyük + sol çizgiye teğet */
     .icon-bubble{
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
 
-      left: -2px;  /* teğet ayarı: -1 / -2 / -3 deneyebilirsin */
+      left: -2px;  /* teğet ayarı: -1 / -2 / -3 */
 
-      width:48px;   /* ✅ daha büyük */
-      height:48px;  /* ✅ daha büyük */
+      width:48px;
+      height:48px;
       border-radius:999px;
 
       display:grid;
       place-items:center;
 
       background: rgba(125,255,107,.16);
-      border: 1px solid rgba(125,255,107,.45); /* neon border kalsın */
+      border: 1px solid rgba(125,255,107,.45);
 
       box-shadow:
         0 0 10px rgba(125,255,107,.25),
@@ -227,13 +227,12 @@
     }
 
     .no .joker-icon{
-      width:34px;   /* ✅ icon da büyüdü */
+      width:34px;
       height:34px;
       object-fit:contain;
       border-radius:10px;
 
       image-rendering: -webkit-optimize-contrast;
-
       filter:
         drop-shadow(0 0 6px rgba(125,255,107,.55))
         drop-shadow(0 0 14px rgba(125,255,107,.25));
