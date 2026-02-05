@@ -36,7 +36,7 @@
         radial-gradient(900px 500px at 70% 15%, rgba(247,198,0,.18), transparent 60%),
         radial-gradient(700px 450px at 25% 80%, rgba(96,165,250,.12), transparent 60%),
         linear-gradient(rgba(5,7,12,0.75), rgba(11,18,32,0.85)),
-        url("bg.png") center / cover no-repeat; /* ✅ Batman background geri */
+        url("bg.jpg") center / cover no-repeat; /* ✅ senin dosyan bg.jpg */
     }
 
     .box{
@@ -70,6 +70,12 @@
       margin: 10px 0 22px;
       color:var(--muted);
       font-size:16px;
+    }
+
+    .below{
+      margin-top:18px;
+      color: var(--bat);
+      font-weight:800;
     }
 
     .playground{
@@ -110,7 +116,7 @@
       padding-right:22px;
     }
 
-    /* ✅ NO text perfectly centered */
+    /* NO text perfectly centered */
     .no .btn-text{
       position:absolute;
       left:50%;
@@ -121,7 +127,6 @@
       pointer-events:none;
       white-space:nowrap;
     }
-
 
     @media (max-width:420px){
       .playground{ height:170px; }
@@ -160,7 +165,6 @@
       </button>
 
       <button class="no" id="noBtn" style="touch-action:none;">
-        <span class="icon-bubble"></span>
         <span class="btn-text">NO</span>
       </button>
     </div>
