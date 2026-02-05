@@ -149,13 +149,39 @@
         min-width:220px;
       }
     }
+
+    /* ✅ NON-BLOCKING TOAST (replaces alert so music starts immediately) */
+    .toast{
+      position: fixed;
+      left: 50%;
+      bottom: 26px;
+      transform: translateX(-50%);
+      background: rgba(14,22,38,.92);
+      border: 1px solid rgba(125,255,107,.35);
+      color: var(--text);
+      padding: 12px 16px;
+      border-radius: 14px;
+      box-shadow: 0 18px 60px rgba(0,0,0,.55);
+      backdrop-filter: blur(10px);
+      max-width: min(520px, 92vw);
+      text-align: center;
+      font-weight: 800;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .18s ease, transform .18s ease;
+      z-index: 9999;
+    }
+    .toast.show{
+      opacity: 1;
+      transform: translateX(-50%) translateY(-6px);
+    }
   </style>
 </head>
 
 <body>
 
   <!-- ✅ MUSIC BACK -->
-  <audio id="bgm" loop>
+  <audio id="bgm" loop preload="auto">
     <source src="music.mp3" type="audio/mpeg">
   </audio>
 
@@ -177,6 +203,9 @@
     <p class="below">(Choose wisely, or the Bat-Signal stays on all night)</p>
   </div>
 
+  <!-- ✅ Toast message (non-blocking, so audio can start instantly) -->
+  <div id="toast" class="toast" aria-live="polite"></div>
+
   <script>
     const bgm = document.getElementById("bgm");
     const yesBtn = document.getElementById("yesBtn");
@@ -185,10 +214,25 @@
     const pg = document.getElementById("playground");
     const noText = noBtn.querySelector(".btn-text");
 
-    // ✅ YES: play music + alert
-    yesBtn.addEventListener("click", () => {
-      bgm.play().catch(()=>{});
-      alert("Hope you clicked it on your first try 💛");
+    // ✅ Toast helper (replaces alert)
+    const toast = document.getElementById("toast");
+    function showToast(msg, ms = 1800){
+      toast.textContent = msg;
+      toast.classList.add("show");
+      clearTimeout(showToast._t);
+      showToast._t = setTimeout(() => toast.classList.remove("show"), ms);
+    }
+
+    // ✅ YES: start music immediately + show non-blocking message
+    yesBtn.addEventListener("click", async () => {
+      try{
+        bgm.currentTime = 0;
+        await bgm.play(); // audio attempt happens immediately on the user gesture
+        showToast("Hope you clicked it on your first try 💛");
+      } catch(e){
+        // If a browser still blocks it (rare), user can tap again
+        showToast("Tap again to start the music 💛", 2000);
+      }
     });
 
     const phrases = [
