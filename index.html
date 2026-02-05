@@ -170,14 +170,15 @@
     }
     .yes:hover{ filter: brightness(1.05); }
 
-    /* NO (bubble'lı tasarım) */
+    /* ✅ NO (teğet bubble + neon border) */
     .no{
-      display:grid;
-      grid-template-columns: 40px 1fr 40px; /* bubble 44px -> tam oturur */
-      align-items:center;
+      position: relative;         /* bubble’ı buna göre konumlayacağız */
+      display: grid;
+      grid-template-columns: 1fr; /* yazı tek kolonda tam ortada */
+      align-items: center;
 
-      padding-left: 0 !important;  /* ✅ SOL MOR BOŞLUK GİDER */
-      padding-right: 22px;         /* sağ taraf YES gibi kalsın */
+      padding-left: 0 !important; /* sol padding sıfır */
+      padding-right: 22px;        /* sağ YES gibi kalsın */
 
       background: linear-gradient(180deg, #2b123d, #14091f);
       color:#e9eefc;
@@ -193,27 +194,34 @@
       justify-self:center;
       font-weight:900;
       letter-spacing:.5px;
-      font-size: 18px;   /* ✅ biraz daha büyük */
+      font-size: 18px;
     }
 
-    /* Yuvarlak: kapsülün içinde ve TAM SOLDA */
+    /* ✅ Bubble: kapsülün sol neon çizgisine TEĞET (sıfır) */
     .icon-bubble{
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+
+      /* 👇 TEĞET AYARI:
+         kapsül border'ı 2px -> bubble'ı 2px sola alırsak çizgi üstüne biner */
+      left: -2px;
+
       width:44px;
       height:44px;
       border-radius:999px;
-
-      justify-self: start;
-      margin-left: -10px !important;   /* ✅ tam sol duvara */
 
       display:grid;
       place-items:center;
 
       background: rgba(125,255,107,.16);
-      border: 1px solid rgba(125,255,107,.45);
+      border: 1px solid rgba(125,255,107,.45); /* ✅ yeşil neon bubble çerçevesi KALSIN */
 
       box-shadow:
         0 0 10px rgba(125,255,107,.25),
         inset 0 0 0 2px rgba(255,255,255,.06);
+
+      z-index: 2; /* kapsül border'ının üstünde dursun */
     }
 
     .no .joker-icon{
@@ -285,7 +293,6 @@
           <img class="joker-icon" src="joker.png" alt="">
         </span>
         <span class="btn-text">NO</span>
-        <span aria-hidden="true"></span>
       </button>
     </div>
 
