@@ -1,281 +1,231 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>For Micaela 🦇💛</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>For Micaela 🦇💛</title>
 
-  <style>
-    :root{
-      --bg1:#05070c;
-      --bg2:#0b1220;
-      --card:#0e1626;
-      --text:#e9eefc;
-      --muted:#a7b2cc;
-      --bat:#f7c600;
-      --batDark:#caa300;
-      --neon:#7dff6b;
-      --purple:#3a1459;
-    }
+<style>
+:root{
+  --bg1:#05070c;
+  --bg2:#0b1220;
+  --card:#0e1626;
+  --text:#e9eefc;
+  --muted:#a7b2cc;
+  --bat:#f7c600;
+  --batDark:#caa300;
+  --neon:#7dff6b;
+}
 
-    *{ box-sizing:border-box; }
+*{ box-sizing:border-box; }
 
-    body{
-      margin:0;
-      width:100vw;
-      height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color:var(--text);
-      overflow:hidden;
-      background:
-        radial-gradient(900px 500px at 70% 15%, rgba(247,198,0,.18), transparent 60%),
-        radial-gradient(700px 450px at 25% 80%, rgba(96,165,250,.12), transparent 60%),
-        linear-gradient(rgba(5,7,12,0.75), rgba(11,18,32,0.85)),
-        url("bg.jpg") center / cover no-repeat;
-    }
+body{
+  margin:0;
+  width:100vw;
+  height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color:var(--text);
+  overflow:hidden;
+  background:
+    radial-gradient(900px 500px at 70% 15%, rgba(247,198,0,.18), transparent 60%),
+    radial-gradient(700px 450px at 25% 80%, rgba(96,165,250,.12), transparent 60%),
+    linear-gradient(rgba(5,7,12,0.75), rgba(11,18,32,0.85)),
+    url("bg.jpg") center / cover no-repeat;
+}
 
-    .box{
-      width:min(560px, 92vw);
-      background: linear-gradient(180deg, rgba(14,22,38,.92), rgba(10,16,30,.92));
-      border-radius:24px;
-      padding:28px 22px;
-      text-align:center;
-      box-shadow: 0 18px 60px rgba(0,0,0,.55);
-      backdrop-filter: blur(10px);
-    }
+.box{
+  width:min(560px, 92vw);
+  background: linear-gradient(180deg, rgba(14,22,38,.92), rgba(10,16,30,.92));
+  border-radius:24px;
+  padding:28px 22px;
+  text-align:center;
+  box-shadow: 0 18px 60px rgba(0,0,0,.55);
+  backdrop-filter: blur(10px);
+}
 
-    .badge{
-      display:inline-flex;
-      gap:10px;
-      padding:8px 14px;
-      border-radius:999px;
-      background: rgba(247,198,0,.08);
-      color: var(--bat);
-      font-weight:700;
-      margin-bottom:14px;
-    }
+.badge{
+  display:inline-flex;
+  gap:10px;
+  padding:8px 14px;
+  border-radius:999px;
+  background: rgba(247,198,0,.08);
+  color: var(--bat);
+  font-weight:700;
+  margin-bottom:14px;
+}
 
-    h1{
-      margin:8px 0 6px;
-      font-size:34px;
-      line-height:1.1;
-    }
+h1{
+  margin:8px 0 6px;
+  font-size:34px;
+}
 
-    p{
-      margin: 10px 0 22px;
-      color:var(--muted);
-      font-size:16px;
-    }
+p{
+  margin:10px 0 22px;
+  color:var(--muted);
+}
 
-    .below{
-      margin-top:18px;
-      color: var(--bat);
-      font-weight:800;
-    }
+.below{
+  margin-top:18px;
+  color:var(--bat);
+  font-weight:800;
+}
 
-    .playground{
-      position: relative;
-      max-width:420px;
-      height:110px;
-      margin:0 auto;
-    }
+.playground{
+  position:relative;
+  max-width:420px;
+  height:110px;
+  margin:0 auto;
+}
 
-    button{
-      height:56px;
-      min-width:170px;
-      border-radius:999px;
-      font-size:16px;
-      font-weight:800;
-      cursor:pointer;
-      border:none;
-      position:absolute;
-      user-select:none;
-    }
+/* ✅ BUTTON BASE — SAME SIZE GUARANTEED */
+button{
+  position:absolute;
+  width:220px;
+  height:56px;
+  border-radius:999px;
+  font-size:16px;
+  font-weight:800;
+  cursor:pointer;
+  border:none;
+  user-select:none;
 
-    .yes{
-      left:0;
-      top:50%;
-      transform: translateY(-50%) scale(1.08);
-      background: linear-gradient(180deg, var(--bat), var(--batDark));
-      color:#0a0a0a;
-      box-shadow: 0 14px 30px rgba(247,198,0,.18);
-    }
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
 
-    .no{
-      right:0;
-      top:50%;
-      transform: translateY(-50%);
-      background: linear-gradient(180deg, #2b123d, #14091f);
-      border:2px solid var(--neon);
-      color:#e9eefc;
-      padding-right:22px;
-    }
+/* YES */
+.yes{
+  left:0;
+  top:50%;
+  transform: translateY(-50%) scale(1.08);
+  background: linear-gradient(180deg, var(--bat), var(--batDark));
+  color:#0a0a0a;
+  box-shadow: 0 14px 30px rgba(247,198,0,.18);
+}
 
-    /* NO text perfectly centered */
-    .no .btn-text{
-      position:absolute;
-      left:50%;
-      top:50%;
-      transform: translate(-50%, -50%);
-      font-size:18px;
-      font-weight:900;
-      pointer-events:none;
-      white-space:nowrap;
-    }
+/* NO */
+.no{
+  right:0;
+  top:50%;
+  transform: translateY(-50%);
+  background: linear-gradient(180deg, #2b123d, #14091f);
+  border:2px solid var(--neon);
+  color:#e9eefc;
+}
 
-    @media (max-width:420px){
-      .playground{ height:170px; }
+/* MOBILE */
+@media (max-width:420px){
+  .playground{ height:170px; }
 
-      .yes{
-        left:50%;
-        top:35%;
-        transform: translate(-50%, -50%) scale(1.08);
-      }
+  .yes{
+    left:50%;
+    top:35%;
+    transform: translate(-50%, -50%) scale(1.08);
+  }
 
-      .no{
-        left:50%;
-        top:75%;
-        right:auto;
-        transform: translate(-50%, -50%);
-      }
+  .no{
+    left:50%;
+    top:75%;
+    right:auto;
+    transform: translate(-50%, -50%);
+  }
+}
 
-      button{
-        width:220px;
-        min-width:220px;
-      }
-    }
+/* TOAST */
+.toast{
+  position: fixed;
+  left:50%;
+  bottom:26px;
+  transform: translateX(-50%);
+  background: rgba(14,22,38,.92);
+  border:1px solid rgba(125,255,107,.35);
+  padding:12px 16px;
+  border-radius:14px;
+  font-weight:800;
+  opacity:0;
+  transition:.2s;
+}
 
-    /* NON-BLOCKING TOAST */
-    .toast{
-      position: fixed;
-      left: 50%;
-      bottom: 26px;
-      transform: translateX(-50%);
-      background: rgba(14,22,38,.92);
-      border: 1px solid rgba(125,255,107,.35);
-      color: var(--text);
-      padding: 12px 16px;
-      border-radius: 14px;
-      box-shadow: 0 18px 60px rgba(0,0,0,.55);
-      backdrop-filter: blur(10px);
-      max-width: min(520px, 92vw);
-      text-align: center;
-      font-weight: 800;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity .18s ease, transform .18s ease;
-      z-index: 9999;
-    }
-
-    .toast.show{
-      opacity: 1;
-      transform: translateX(-50%) translateY(-6px);
-    }
-  </style>
+.toast.show{
+  opacity:1;
+}
+</style>
 </head>
 
 <body>
 
-  <audio id="bgm" loop preload="auto">
-    <source src="music.mp3" type="audio/mpeg">
-  </audio>
+<audio id="bgm" loop preload="auto">
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
 
-  <div class="box">
-    <div class="badge"> 🦇 SECRET BAT MESSAGE</div>
-    <h1>Will you be my Valentine?</h1>
-    <p>For Valentine's Day</p>
+<div class="box">
+  <div class="badge">🦇 SECRET BAT MESSAGE</div>
+  <h1>Will you be my Valentine?</h1>
+  <p>For Valentine's Day</p>
 
-    <div class="playground" id="playground">
-      <button class="yes" id="yesBtn">YES 💘</button>
-
-      <button class="no" id="noBtn" style="touch-action:none;">
-        <span class="btn-text">NO</span>
-      </button>
-    </div>
-
-    <p class="below">(Choose wisely, or the Bat-Signal stays on all night)</p>
+  <div class="playground" id="playground">
+    <button class="yes" id="yesBtn">YES 💘</button>
+    <button class="no" id="noBtn">LOL NO</button>
   </div>
 
-  <div id="toast" class="toast" aria-live="polite"></div>
+  <p class="below">(Choose wisely, or the Bat-Signal stays on all night)</p>
+</div>
 
-  <script>
-    const bgm = document.getElementById("bgm");
-    const yesBtn = document.getElementById("yesBtn");
+<div id="toast" class="toast"></div>
 
-    const noBtn = document.getElementById("noBtn");
-    const pg = document.getElementById("playground");
-    const noText = noBtn.querySelector(".btn-text");
+<script>
+const bgm = document.getElementById("bgm");
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const pg = document.getElementById("playground");
+const toast = document.getElementById("toast");
 
-    const toast = document.getElementById("toast");
-    function showToast(msg, ms = 4000){
-      toast.textContent = msg;
-      toast.classList.add("show");
-      clearTimeout(showToast._t);
-      showToast._t = setTimeout(() => toast.classList.remove("show"), ms);
-    }
+function showToast(msg, ms=4000){
+  toast.textContent = msg;
+  toast.classList.add("show");
+  setTimeout(()=>toast.classList.remove("show"), ms);
+}
 
-    yesBtn.addEventListener("click", async () => {
-      try{
-        bgm.currentTime = 0;
-        await bgm.play();
-        showToast("Hope you clicked it on your first try 💛");
-      } catch(e){
-        showToast("Tap again to start the music 💛", 2000);
-      }
-    });
+yesBtn.onclick = async () => {
+  await bgm.play().catch(()=>{});
+  showToast("Hope you clicked it on your first try 💛");
+};
 
-    const phrases = [
-      "NO",
-      "TRY AGAIN!",
-      "HMM…",
-      "TRY HARDER",
-      "AHA!",
-      "ONE LAST TIME!",
-      "HA. NO 🃏",
-      "SERIOUSLY?!",
-      "U R DEAD ☠️🦇"
-    ];
+const phrases = [
+  "LOL NO",
+  "TRY AGAIN!",
+  "HMM…",
+  "TRY HARDER",
+  "AHA!",
+  "ONE LAST TIME!",
+  "HA. NO 🃏",
+  "SERIOUSLY?!",
+  "U R DEAD ☠️🦇"
+];
 
-    let i = 0;
-    let last = 0;
+let i=0;
+function dodge(){
+  i=(i+1)%phrases.length;
+  noBtn.textContent = phrases[i];
 
-    function nextText(){
-      const now = Date.now();
-      if(now - last < 140) return;
-      last = now;
-      i = (i + 1) % phrases.length;
-      noText.textContent = phrases[i];
-    }
+  const r = pg.getBoundingClientRect();
+  const x = Math.random()*(r.width-noBtn.offsetWidth);
+  const y = Math.random()*(r.height-noBtn.offsetHeight);
 
-    function dodge(){
-      const r = pg.getBoundingClientRect();
-      const w = noBtn.offsetWidth;
-      const h = noBtn.offsetHeight;
-      const x = Math.random() * (r.width - w);
-      const y = Math.random() * (r.height - h);
+  noBtn.style.left = x+"px";
+  noBtn.style.top = y+"px";
+  noBtn.style.right="auto";
+  noBtn.style.transform="translate(0,0)";
+}
 
-      noBtn.style.left = x + "px";
-      noBtn.style.top  = y + "px";
-      noBtn.style.right = "auto";
-      noBtn.style.transform = "translate(0,0)";
-    }
-
-    function attempt(e){
-      e.preventDefault();
-      nextText();
-      dodge();
-    }
-
-    noBtn.addEventListener("pointerenter", attempt);
-    noBtn.addEventListener("mousemove", attempt);
-    noBtn.addEventListener("pointerdown", attempt);
-    noBtn.addEventListener("touchstart", attempt, { passive:false });
-    noBtn.addEventListener("touchmove", attempt, { passive:false });
-    noBtn.addEventListener("click", attempt);
-  </script>
+["pointerenter","mousemove","touchstart","click"].forEach(e=>{
+  noBtn.addEventListener(e,dodge,{passive:false});
+});
+</script>
 
 </body>
 </html>
